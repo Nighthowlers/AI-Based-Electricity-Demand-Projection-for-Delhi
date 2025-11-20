@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="/static/CSS/2.css" />
+    <!-- C:\Users\saksh\OneDrive\Desktop\Electricity Delhi (Tulas) (3)\Electricity Delhi (Tulas)\CSS\2.css -->
+</head>
+<body>
+    <div class="logo-container">
+        <img src="/static/Assest/CEA_logo_for_English.webp" alt="Logo 1" class="logo1">
+        <img src="/static/Assest/DigitalIndia.png" alt="Logo 2" class="logo2">
+        <img src="/static/Assest/627bc505909d95f734d28f52.png" alt="Logo 3" class="logo3">
+    </div>
+    <h1 class="main-heading">Power Predictor</h1>
+    <div class="container">
+        <form id="loginForm">
+            <h2>Login-form</h2>
+            <div class="input-field">
+                <input type="text" required />
+                <label>Enter User Id</label>
+            </div>
+            <div class="input-field">
+                <input id="password" type="password" required />
+                <label>Enter password</label>
+                <span id="togglePassword" class="eye-icon">
+                </span>
+            </div>
+            <div class="forget">
+                <label for="Save-login">
+                    <input type="checkbox" id="Save-login" />
+                    <p>Save login information</p>
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" name="login_button">Log In</button>
+        </form>
+    </div>
+
+    <script src="/static/EjavaScript/3.js"></script>
+</body>
+</html>

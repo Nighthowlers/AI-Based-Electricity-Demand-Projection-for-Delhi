@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/CSS/Predictor.css">
+    <title>Electricity Predictor</title>
+    <style>
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .marquee {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            animation: scroll 30s linear infinite;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        canvas {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="min-h-screen flex flex-col bg-gradient-to-tr from-blue-100 to-white">
+    <nav>
+        <div class="relative w-full mx-auto flex flex-wrap items-center justify-between bg-blue-100 px-4 lg:px-0">
+            <!-- Logo -->
+            <a href="https://cea.nic.in/?lang=en" class="py-4 pr-10">
+                <img src="/static/Assest/elct_ministry.png" class="w-36" alt="Ministry Logo"/>
+            </a>
+
+            <!-- Navigation Links -->
+            <ul class="hidden lg:flex space-x-8 text-center">
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="">Home</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/imp-Links">Important Links</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/distribution" target="_blank">Distribution</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/about-us" target="_blank">About Us</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/help-us" target="_blank">Help Desk</a></li>
+            </ul>
+
+            <!-- Right side: Logo & Button -->
+            <div class="flex space-x-8 mx-4">
+                <img src="/static/Assest/DigitalIndia.png" class="w-28" alt="Digital India">
+                <a href="/" class="py-4 px-4 font-sans rounded-sm text-sm font-bold bg-blue-500 text-white hover:bg-blue-700">Logout</a>
+                {% comment %} <button class="py-2 px-4 font-sans rounded-sm text-sm font-bold bg-blue-500 text-white hover:bg-blue-700">Logout</button> {% endcomment %}
+            </div>
+        </div>
+    </nav>
+
+    <section class="flex-grow">
+        <div class="relative w-full flex justify-center flex-wrap items-center px-4 lg:px-0">
+
+            <div class="flex items-center">
+                <img src="/static/Assest/CEA_logo_for_English.webp" class="w-40 h-auto lg:w-96" alt="CEA Logo">
+            </div>
+            <img src="/static/Assest/CEA_Header.webp" class="w-full h-auto mt-4 lg:mt-0" alt="CEA Header">
+        </div>
+        
+        <div class="relative w-40 top-9 left-20 bg-white shadow-md rounded-md p-2">
+            <form action="{% url 'formInfo' %}" method="post">
+                {% csrf_token %}
+                <label for="region" >Select Region</label>
+                <select id="region" name="region" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"> 
+                    <option value="0" >East</option>
+                    <option value="3">West</option>
+                    <option value="1">North</option>
+                    <option value="2">South</option>
+                </select>
+                <input class="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded w-full cursor-pointer" type="submit" value="Submit">
+                {% comment %} <input type="submit" value="Submit"> {% endcomment %}
+            </form>
+            
+        </div>
+
+        <div class="text-center my-8">
+            <h1 class="text-xl font-bold">Electricity Demand (MW)</h1>
+        </div>
+        <div class="flex justify-center px-4">
+            <canvas id="tempChart" width="600" height="400"></canvas>
+        </div>
+    </section>
+
+    <div class="my-10 overflow-hidden">
+        <div class="marquee flex items-center justify-start space-x-10 md:space-x-20">
+            <img class="h-[80px] w-auto" src="/static/Assest/DigitalIndia.png" alt="Digital India">
+            <img class="h-[80px] w-auto" src="/static/Assest/CEA_logo_for_English.webp" alt="CEA">
+            <img class="h-[80px] w-auto" src="/static/Assest/Swach-Bharat-Abhiyan-Logo-Vector.svg-.png" alt="Swach Bharat">
+            <img class="h-[80px] w-auto" src="/static/Assest/G20-theme-and-logo.png" alt="G20">
+            <img class="h-[80px] w-auto" src="/static/Assest/th (1).jpeg" alt="Company 1">
+            <img class="h-[80px] w-auto" src="/static/Assest/DigitalIndia.png" alt="Digital India">
+            <img class="h-[80px] w-auto" src="/static/Assest/CEA_logo_for_English.webp" alt="CEA">
+            <img class="h-[80px] w-auto" src="/static/Assest/Swach-Bharat-Abhiyan-Logo-Vector.svg-.png" alt="Swach Bharat">
+            <img class="h-[80px] w-auto" src="/static/Assest/G20-theme-and-logo.png" alt="G20">
+            <img class="h-[80px] w-auto" src="/static/Assest/th (1).jpeg" alt="Company 1">
+
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-blue-900 text-white py-10">
+        <div class="container mx-auto flex flex-wrap justify-between items-start px-4">
+            <!-- Contact Info -->
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+                <p>Ministry of Power, Government of India</p>
+                <p>Central Electricity Authority</p>
+                <p>Email: <a href="mailto:contact@cea.gov.in" class="text-blue-400">contact@cea.gov.in</a></p>
+                <p>Phone: +91-11-123456789</p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h4 class="text-lg font-bold mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-gray-400">Twitter</a>
+                    <a href="#" class="hover:text-gray-400">LinkedIn</a>
+                    <a href="#" class="hover:text-gray-400">Facebook</a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="w-full md:w-1/3">
+                <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                <ul>
+                    <li><a href="https://cea.nic.in/?lang=en" class="hover:text-gray-400">CEA Official Website</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Electricity Demand Forecast</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Government Initiatives</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <p class="text-sm">&copy; 2024 Central Electricity Authority. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Get the canvas element
+  const ctx = document.getElementById('tempChart').getContext('2d');
+
+  // Electricity demand data
+  const temperatureData = {{result}}
+  {% comment %} const temperatureData = [3119.5157, 3106.56, 3122.75, 3154, 3171, 3191, 3220, 3239]; // in MW {% endcomment %}
+  const labels = ['01 am', '04 am', '07 am', '10 am', '01 pm', '04 pm', '07 pm','10 pm'];
+
+  // Create the chart
+  const temperatureChart = new Chart(ctx, {
+    type: 'line', 
+    data: {
+      labels: labels, 
+      datasets: [{
+        label: 'Electricity Demand (MW)',
+        data: temperatureData, 
+        borderColor: 'rgba(75, 192, 192, 1)', 
+        backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+        borderWidth: 2,
+        fill: true, 
+        pointRadius: 5, 
+        pointBackgroundColor: 'rgba(75, 192, 192, 1)', 
+        tension: 0.4 
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: false,
+          suggestedMin: Math.min(...temperatureData) - 5, 
+          suggestedMax: Math.max(...temperatureData) + 5, 
+          title: {
+            display: true,
+            text: 'Electricity Demand (MW)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Time'
+          }
+        }
+      }
+    }
+  });
+</script>
+
+<script src="/static/EjavaScript/Predictor.js"></script>
+</body>
+</html>

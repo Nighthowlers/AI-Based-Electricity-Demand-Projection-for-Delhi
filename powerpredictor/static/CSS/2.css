@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/static/Assest/bg.jpg"), #000;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+  border-image: fill 0 linear-gradient(rgba(145, 142, 142, 0.2), #2b2929);
+}
+
+/* Logo Section */
+.logo-container {
+  position: relative;
+  width: 95%;
+  max-width: auto;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.logo1 {
+  position: absolute;
+  left: 0;
+  margin-left: 2px;
+  width: 300px;
+  height: 60px;
+}
+
+.logo2 {
+  position: absolute;
+  left: 50%;
+  width: 250px;
+  height: 100px;
+  transform: translateX(-50%);
+}
+.logo3 {
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  width: 80px;
+  height: 150px;
+  margin-right: 2px;
+}
+
+/* Main Heading */
+.main-heading {
+  font-size: 4rem;
+  color: #000;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Form Container */
+.container {
+  width: 400px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(10, 9, 9, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(0px);
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid #000000;
+  margin: 15px 0;
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #000000;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+.input-field input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #000000;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-120%);
+}
+
+.forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 35px 0;
+  color: #000000;
+}
+
+#Save-login {
+  accent-color: #000000;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+}
+
+.forget label p {
+  margin-left: 8px;
+}
+
+.container a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  color: #000000;
+  border-color: #000000;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive Design */
+/* @media (max-width: 768px) {
+  .logo-container {
+    height: auto;
+  }
+
+  .logo1,
+  .logo:nth-child(2),
+  .logo:nth-child(3) {
+    position: static;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    width: 90%;
+  }
+} */
+
+
+/* Media Queries 
+
+@media (max-width: 850px) {
+  .logo-container {
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .logo-container img {
+      max-width: 80px;
+  }
+
+  .main-heading {
+      font-size: 2em;
+  }
+}
+
+@media (max-height: 650px) {
+  body {
+      flex-direction: column;
+      padding: 10px;
+  }
+
+  .logo-container img {
+      max-width: 70px;
+  }
+
+  .container {
+      padding: 10px;
+      max-width: 350px;
+  }
+
+  .main-heading {
+      font-size: 1.8em;
+  }
+}
+
+@media (max-width: 850px), (max-height: 650px) {
+  body {
+      justify-content: flex-start;
+      align-items: center;
+  }
+
+  .container {
+      max-height: 90%;
+      overflow-y: auto;
+  }
+
+  .logo-container {
+      margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .logo-container img {
+      max-width: 60px;
+  }
+
+  .main-heading {
+      font-size: 1.5em;
+  }
+
+  .container {
+      max-width: 300px;
+  }
+
+  .input-field input {
+      font-size: 14px;
+  }
+
+  button {
+      font-size: 14px;
+      padding: 10px;
+  }
+}  */
