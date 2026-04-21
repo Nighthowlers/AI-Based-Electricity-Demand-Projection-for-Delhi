@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/static/CSS/Predictor.css">
     <title>Electricity Predictor</title>
     <style>
+        nav { position: fixed; top: 0; width: 100%; z-index: 50; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        body { padding-top: 80px; font-family: Arial, sans-serif; }
+        
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
@@ -17,10 +20,6 @@
             justify-content: start;
             align-items: center;
             animation: scroll 30s linear infinite;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
         }
         
         canvas {

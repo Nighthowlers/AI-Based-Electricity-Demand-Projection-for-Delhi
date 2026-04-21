@@ -5,12 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Help Desk - AI Power Demand Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/static/CSS/help.css">
+    <style>
+        nav { position: fixed; top: 0; width: 100%; z-index: 50; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        body { padding-top: 80px; }
+    </style>
 </head>
 <body>
-
+    <nav>
+        <div class="relative w-full mx-auto flex flex-wrap items-center justify-between bg-blue-100 px-4 lg:px-0">
+            <a href="https://cea.nic.in/?lang=en" class="py-4 pr-10">
+                <img src="/static/Assest/elct_ministry.png" class="w-36" alt="Ministry Logo"/>
+            </a>
+            <ul class="hidden lg:flex space-x-8 text-center">
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/">Home</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/imp-Links">Important Links</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/distribution">Distribution</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/about-us">About Us</a></li>
+                <li class="text-gray-600 py-4 hover:text-blue-500 font-semibold"><a href="/help-us">Help Desk</a></li>
+            </ul>
+            <div class="flex space-x-8 mx-4">
+                <img src="/static/Assest/DigitalIndia.png" class="w-28" alt="Digital India">
+                <a href="/" class="py-4 px-4 font-sans rounded-sm text-sm font-bold bg-blue-500 text-white hover:bg-blue-700">Logout</a>
+            </div>
+        </div>
+    </nav>
     <header>
         <h1>Help Desk</h1>
         <p>Your Support Hub for AI Power Demand Prediction</p>
